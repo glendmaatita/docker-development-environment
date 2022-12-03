@@ -24,7 +24,7 @@ RUN pip install "cryptography==3.3.1"
 WORKDIR /opt/build
 
 # SSH
-RUN apt install -y openssh-server \
+RUN apt install -y openssh-server google-cloud-sdk-gke-gcloud-auth-plugin \
 	&& mkdir /var/run/sshd
 COPY sshd_config /etc/ssh/sshd_config
 ENTRYPOINT ["/opt/dev-env/init-env"]
