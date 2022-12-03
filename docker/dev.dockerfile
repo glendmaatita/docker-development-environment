@@ -43,3 +43,7 @@ ENV PATH="/home/${USERNAME}/.local/bin:$PATH"
 RUN git clone https://github.com/creationix/nvm.git /opt/nvm \
 	&& cd /opt/nvm \
 	&& git checkout v0.39.2
+    
+# install kubectl
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
