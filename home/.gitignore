@@ -17,3 +17,6 @@ aws/
 .DS_Store
 .lesshst
 .viminfo
+.shell.pre-oh-my-zsh
+.zshrc
+.zshrc.pre-oh-my-zsh
