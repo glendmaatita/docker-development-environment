@@ -24,7 +24,7 @@ RUN pip install "cryptography==3.3.1"
 WORKDIR /opt/build
 
 # SSH
-RUN apt install -y openssh-server google-cloud-sdk-gke-gcloud-auth-plugin \
+RUN apt install -y openssh-server google-cloud-sdk-gke-gcloud-auth-plugin zip \
 	&& mkdir /var/run/sshd
 COPY sshd_config /etc/ssh/sshd_config
 ENTRYPOINT ["/opt/dev-env/init-env"]
@@ -47,3 +47,8 @@ RUN git clone https://github.com/creationix/nvm.git /opt/nvm \
 # install kubectl
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 RUN install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+# install aws
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
