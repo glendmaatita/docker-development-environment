@@ -18,12 +18,13 @@ endef
 
 define startcompose
 	if [ -z  "$(RUNNING_SERVICES)" ] || [ "$(SERVICES)" = "$(RUNNING_SERVICES)" ]; then \
-		docker-compose up --build -d; \
+		mkdir -p postgres-data && docker-compose up --build -d; \
 	fi
 endef
 
 # init docker compose
 init:
+	mkdir -p postgres-data
 	docker-compose up --build -d
 
 # stop docker container
@@ -43,3 +44,13 @@ cli:
 		-p 22222 \
 		-i docker/id_rsa \
 		$(USERNAME)@localhost
+
+# use `make cli-redis c=some_custom` to custom redis
+# to connect to default database, use `make cli-redis`
+redis-cli:
+	docker-compose exec redis redis-cli $(c)
+
+# connect to psql
+# to connect to a database, use `make cli-psql c=<db name>`
+psql:
+	docker-compose exec --user postgres postgresql psql $(c)

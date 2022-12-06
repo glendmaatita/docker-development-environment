@@ -1,6 +1,6 @@
 # Docker for Development Environment
 
-Vagrant is awesome, as isolated Development Environment. Unfortunately, we cannot use Vagrant in MacOs for severtal reason. Therefore, we use this Docker configuration as `Vagrant Replacement`. The Docker Image is based on Ubuntu Jammy (22.04.1 LTS).
+Vagrant is awesome, as isolated Development Environment. Unfortunately, we cannot use Vagrant in MacOs for severtal reason. Therefore, we use this Docker configuration as `Vagrant Replacement`. The Docker Image is based on Ubuntu Jammy (22.04 LTS).
 
 Using this configuration, we finally have isolated environment for Development. We use it as *stateful* environment, means we rarely destroy any data inside the container.
 
@@ -26,7 +26,7 @@ If you want to install something inside container, then you should login as root
 
 ### Working with NodeJS
 
-NodeJS can be installed with NVM 
+NodeJS can be installed with NVM
 
 ```bash
 ~$ nvm install 16.14.1
@@ -42,6 +42,22 @@ Python 3.9 will be installed during Docker Build.
 ```bash
 ~$ python3 --version
 Python 3.9.15
+```
+
+### Using PostgreSQL
+
+PostgreSQL 13 will be installed along with `psql` as its client
+
+```bash
+~$ make psql
+```
+
+### Using Redis
+
+Redis CLI can be used through this command
+
+```bash
+~$ make redis-cli
 ```
 
 ### Working with Projects
