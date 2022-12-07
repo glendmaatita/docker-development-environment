@@ -18,13 +18,12 @@ endef
 
 define startcompose
 	if [ -z  "$(RUNNING_SERVICES)" ] || [ "$(SERVICES)" = "$(RUNNING_SERVICES)" ]; then \
-		mkdir -p postgres-data && docker-compose up --build -d; \
+		docker-compose up --build -d; \
 	fi
 endef
 
 # init docker compose
 init:
-	mkdir -p postgres-data
 	docker-compose up --build -d
 
 # stop docker container
