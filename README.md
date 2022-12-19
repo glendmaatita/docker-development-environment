@@ -1,6 +1,6 @@
 # Docker for Development Environment
 
-Vagrant is awesome, as isolated Development Environment. Unfortunately, we cannot use Vagrant in MacOs for severtal reason. Therefore, we use this Docker configuration as `Vagrant Replacement`. The Docker Image is based on Ubuntu Jammy (22.04 LTS).
+Vagrant is awesome, as isolated Development Environment. Unfortunately, we cannot use Vagrant in MacOs for some reasons (yeah, I know we can still use Vagrant with Parallels). Therefore, we use this Docker configuration as `Vagrant Replacement`. The Docker Image is based on Ubuntu Jammy (22.04 LTS).
 
 Using this configuration, we finally have isolated environment for Development. We use it as *stateful* environment, means we rarely destroy any data inside the container.
 
